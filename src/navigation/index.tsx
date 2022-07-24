@@ -2,6 +2,7 @@ import { BottomNavigation, Text } from 'react-native-paper'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import { View, Easing } from 'react-native'
 import { useState, ComponentProps } from 'react'
+import ContactScreen from '~/screens/ContactScreen'
 
 type RoutesState = Array<{
   key: string
@@ -24,7 +25,6 @@ const MapRoute = () => (
     <Text variant="displayLarge">Display Large</Text>
   </View>
 )
-const MessageRoute = () => <Text>Message</Text>
 const SettingsRoute = () => <Text>Settings</Text>
 
 export default function Navigation() {
@@ -45,8 +45,8 @@ export default function Navigation() {
       focusedIcon: 'inbox',
     },
     {
-      key: 'message',
-      title: 'Message',
+      key: 'contact',
+      title: 'Messages',
       focusedIcon: 'message',
     },
     {
@@ -65,7 +65,7 @@ export default function Navigation() {
       renderScene={BottomNavigation.SceneMap({
         match: MatchRoute,
         map: MapRoute,
-        message: MessageRoute,
+        contact: ContactScreen,
         settings: SettingsRoute,
       })}
       sceneAnimationEnabled={sceneAnimation !== undefined}

@@ -1,6 +1,7 @@
-import { Appbar } from 'react-native-paper'
+import { format } from 'date-fns'
 
 import * as React from 'react'
+import { Appbar } from 'react-native-paper'
 import { StyleSheet, Image, View, ScrollView } from 'react-native'
 import { Caption, List, Text, Divider } from 'react-native-paper'
 export default function ContactScreen() {
@@ -88,7 +89,9 @@ export default function ContactScreen() {
                       <Text style={{ color: titleColor, fontSize }}>
                         {item.name}
                       </Text>
-                      <Caption>{item.date}</Caption>
+                      <Caption>
+                        {format(new Date(item.date), 'yy-mm-dd')}
+                      </Caption>
                     </View>
                   )}
                   description={({ color: descriptionColor, fontSize }) => (
@@ -109,7 +112,7 @@ export default function ContactScreen() {
                     </View>
                   )}
                 />
-                <Divider />
+                <Divider bold />
               </>
             )
           })}

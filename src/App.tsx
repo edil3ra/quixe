@@ -12,6 +12,12 @@ import { NavigationContainer } from '@react-navigation/native'
 import Navigation from '~/navigation'
 import useCachedResources from './hooks/useCachedResources'
 import useColorScheme from './hooks/useColorScheme'
+const theme = {
+  ...DefaultTheme,
+  colors: {
+    ...DefaultTheme.colors,
+  },
+}
 
 function App() {
   const isLoadingComplete = useCachedResources()
@@ -22,7 +28,7 @@ function App() {
   } else {
     return (
       <SafeAreaProvider>
-        <PaperProvider theme={DefaultTheme}>
+        <PaperProvider theme={theme}>
           <React.Fragment>
             <NavigationContainer>
               <Navigation />

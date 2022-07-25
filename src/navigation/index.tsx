@@ -1,76 +1,60 @@
-import { BottomNavigation, Text } from 'react-native-paper'
-import { useSafeAreaInsets } from 'react-native-safe-area-context'
-import { View, Easing } from 'react-native'
-import { useState, ComponentProps } from 'react'
+import * as React from 'react'
+import MatchScreen from '~/screens/MatchScreen'
 import ContactScreen from '~/screens/ContactScreen'
+import MapScreen from '~/screens/MapScreen'
+import SettingScreen from '~/screens/SettingScreen'
+import { createMaterialBottomTabNavigator } from '~/vendors/material-bottom-tabs'
 
-type RoutesState = Array<{
-  key: string
-  title: string
-  focusedIcon: string
-  unfocusedIcon?: string
-  color?: string
-  badge?: boolean
-  getAccessibilityLabel?: string
-  getTestID?: string
-}>
-
-const MatchRoute = () => (
-  <View>
-    <Text variant="displayLarge">Display Large</Text>
-  </View>
-)
-const MapRoute = () => (
-  <View>
-    <Text variant="displayLarge">Display Large</Text>
-  </View>
-)
-const SettingsRoute = () => <Text>Settings</Text>
+const Tab = createMaterialBottomTabNavigator()
 
 export default function Navigation() {
-  const insets = useSafeAreaInsets()
-  const [index, setIndex] = useState(0)
-  const [sceneAnimation, setSceneAnimation] =
-    useState<ComponentProps<typeof BottomNavigation>['sceneAnimationType']>()
-
-  const [routes] = useState<RoutesState>([
-    {
-      key: 'match',
-      title: 'Match',
-      focusedIcon: 'inbox',
-    },
-    {
-      key: 'map',
-      title: 'Map',
-      focusedIcon: 'inbox',
-    },
-    {
-      key: 'contact',
-      title: 'Messages',
-      focusedIcon: 'message',
-    },
-    {
-      key: 'settings',
-      title: 'Settings',
-      focusedIcon: 'cogs',
-    },
-  ])
-
   return (
-    <BottomNavigation
-      safeAreaInsets={{ bottom: insets.bottom }}
-      navigationState={{ index, routes }}
-      onIndexChange={setIndex}
-      labelMaxFontSizeMultiplier={2}
-      renderScene={BottomNavigation.SceneMap({
-        match: MatchRoute,
-        map: MapRoute,
-        contact: ContactScreen,
-        settings: SettingsRoute,
-      })}
-      sceneAnimationEnabled={sceneAnimation !== undefined}
-      sceneAnimationType={sceneAnimation}
-      sceneAnimationEasing={Easing.ease}
-    />
+    <Tab.Navigator
+      initialRouteName="match"
+      inactiveColor="#fff000"
+      options={{
+        title: 'My home',
+        headerStyle: {
+          backgroundColor: '#f4511e',
+        },
+        headerTintColor: '#fff',
+        headerTitleStyle: {
+          fontWeight: 'bold',
+        },
+      }}
+    >
+      <Tab.Screen
+        name="match"
+        component={MatchScreen}
+        options={{
+          title: 'Match',
+          tabBarIcon: 'inbox',
+        }}
+      />
+      <Tab.Screen
+        name="map"
+        component={MapScreen}
+        options={{
+          title: 'Map',
+          tabBarIcon: 'map',
+        }}
+      />
+      <Tab.Screen
+        name="contact"
+        component={ContactScreen}
+        options={{
+          title: 'Messages',
+          tabBarIcon: 'message',
+        }}
+      />
+      <Tab.Screen
+        name="setting"
+        component={SettingScreen}
+        options={{
+          title: 'Settings',
+          tabBarIcon: 'cogs',
+        }}
+      />
+    </Tab.Navigator>
   )
 }

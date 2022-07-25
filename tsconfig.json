@@ -3,6 +3,12 @@
   "rootDir": "./",
   "compilerOptions": {
     "strict": true,
-    "module": "es6"
-  }
+    "module": "es6",
+    "paths": {
+      "~/*": ["src/*"]
+    }
+  },
+  "include": [
+	"./src/**/*",
+  ],
 }

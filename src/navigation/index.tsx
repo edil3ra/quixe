@@ -1,6 +1,7 @@
 import * as React from 'react'
 import MatchScreen from '~/screens/MatchScreen'
 import ContactScreen from '~/screens/ContactScreen'
+import MessageScreen from '~/screens/MessageScreen'
 import MapScreen from '~/screens/MapScreen'
 import SettingScreen from '~/screens/SettingScreen'
 import { createMaterialBottomTabNavigator } from '~/vendors/material-bottom-tabs'
@@ -41,7 +42,7 @@ export default function Navigation() {
       />
       <Tab.Screen
         name="contact"
-        component={ContactScreen}
+        component={MessageScreen}
         options={{
           title: 'Messages',
           tabBarIcon: 'message',

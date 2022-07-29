@@ -4,65 +4,9 @@ import * as React from 'react'
 import { Appbar } from 'react-native-paper'
 import { StyleSheet, Image, View, ScrollView } from 'react-native'
 import { Caption, List, Text, Divider } from 'react-native-paper'
+import { messages } from '~/data/mocks'
 export default function ContactScreen() {
-  const items = [
-    {
-      name: 'johnsondonald',
-      date: '2015-09-13 19:22:49',
-      description:
-        'Analysis help stock win threat human. Example middle remain center catch five.',
-    },
-    {
-      name: 'jgrant',
-      date: '1995-08-20 06:10:26',
-      description:
-        'Ground another word want hundred. Us single appear serve serious.',
-    },
-    {
-      name: 'moorejoseph',
-      date: '2008-09-18 15:56:36',
-      description: 'Control spring now pressure actually medical down.',
-    },
-    {
-      name: 'simmonsmichael',
-      date: '2006-03-21 02:38:36',
-      description: 'Whom pattern manager beautiful election news remain.',
-    },
-    {
-      name: 'mathismichelle',
-      date: '2017-01-13 07:50:31',
-      description:
-        'Position floor somebody mind cell rich to. First face challenge TV make member.',
-    },
-    {
-      name: 'johnsondennis',
-      date: '2008-07-22 00:08:49',
-      description:
-        'Lay west fear energy. Guy us friend keep take remember situation.',
-    },
-    {
-      name: 'ayalaanthony',
-      date: '1989-11-29 13:59:34',
-      description:
-        'Today police development could the alone agency. Consider kind garden might.',
-    },
-    {
-      name: 'qgarner',
-      date: '1996-10-14 16:31:51',
-      description:
-        'Cell wonder your forward need range southern. Product beyond be condition.',
-    },
-    {
-      name: 'erin91',
-      date: '1972-06-11 19:58:56',
-      description: 'Experience today statement scientist.',
-    },
-    {
-      name: 'qnguyen',
-      date: '1992-09-12 04:35:37',
-      description: 'What itself result onto trip cultural.',
-    },
-  ]
+  const items = messages
 
   return (
     <>
@@ -90,7 +34,7 @@ export default function ContactScreen() {
                         {item.name}
                       </Text>
                       <Caption>
-                        {format(new Date(item.date), 'yy-mm-dd')}
+                        {format(new Date(item.createdAt), 'yy-mm-dd')}
                       </Caption>
                     </View>
                   )}
@@ -107,7 +51,7 @@ export default function ContactScreen() {
                         ellipsizeMode={'tail'}
                         style={{ color: descriptionColor, fontSize }}
                       >
-                        {item.description}
+                        {item.content}
                       </Text>
                     </View>
                   )}

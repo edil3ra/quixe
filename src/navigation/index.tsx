@@ -10,7 +10,7 @@ const Tab = createMaterialBottomTabNavigator()
 export default function Navigation() {
   return (
     <Tab.Navigator
-      initialRouteName="match"
+      initialRouteName="contact"
       inactiveColor="#fff000"
       options={{
         title: 'My home',

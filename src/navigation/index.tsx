@@ -12,16 +12,8 @@ export default function Navigation() {
   return (
     <Tab.Navigator
       initialRouteName="contact"
-      inactiveColor="#fff000"
       options={{
         title: 'My home',
-        headerStyle: {
-          backgroundColor: '#f4511e',
-        },
-        headerTintColor: '#fff',
-        headerTitleStyle: {
-          fontWeight: 'bold',
-        },
       }}
     >
       <Tab.Screen

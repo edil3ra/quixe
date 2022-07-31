@@ -62,9 +62,6 @@ export default function MessageScreen() {
 
   return (
     <>
-      <Appbar.Header elevated>
-        <Appbar.Content title="Contacts" />
-      </Appbar.Header>
       <ScrollView>
         <View style={styles.container}>
           <View style={styles.left}>

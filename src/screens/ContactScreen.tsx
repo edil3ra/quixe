@@ -10,9 +10,6 @@ export default function ContactScreen() {
 
   return (
     <>
-      <Appbar.Header elevated>
-        <Appbar.Content title="Messages" />
-      </Appbar.Header>
       <ScrollView>
         <List.Section>
           <List.Subheader>Recent Messages</List.Subheader>

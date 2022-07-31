@@ -8,8 +8,9 @@ import {
   Provider as PaperProvider,
 } from 'react-native-paper'
 import { NavigationContainer } from '@react-navigation/native'
+import { createNativeStackNavigator } from '@react-navigation/native-stack'
 
-import Navigation from '~/navigation'
+import MainNavigation from '~/navigation/MainNavigation'
 import useCachedResources from '~/hooks/useCachedResources'
 const theme = {
   ...DefaultTheme,
@@ -20,6 +21,8 @@ const theme = {
 
 export type ThemeOverride = typeof theme
 
+const Stack = createNativeStackNavigator<any>()
+
 function App() {
   const isLoadingComplete = useCachedResources()
   if (!isLoadingComplete) {
@@ -29,10 +32,16 @@ function App() {
       <SafeAreaProvider>
         <PaperProvider theme={theme}>
           <React.Fragment>
+            <StatusBar translucent backgroundColor="rgba(0, 0, 0, 0.24)" />
             <NavigationContainer>
-              <Navigation />
+              <Stack.Navigator>
+                <Stack.Screen
+                  name="Navigation"
+                  key={'scree'}
+                  component={MainNavigation}
+                />
+              </Stack.Navigator>
             </NavigationContainer>
-            <StatusBar />
           </React.Fragment>
         </PaperProvider>
       </SafeAreaProvider>

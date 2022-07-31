@@ -5,33 +5,66 @@ import MessageScreen from '~/screens/MessageScreen'
 import MapScreen from '~/screens/MapScreen'
 import SettingScreen from '~/screens/SettingScreen'
 import { createMaterialBottomTabNavigator } from '~/vendors/material-bottom-tabs'
+import { useTheme } from 'react-native-paper'
 
-type MaterialBottomTabParams = {
-  TabStack: NavigatorScreenParams<SimpleStackParams>
-  TabAlbums: undefined
-  TabContacts: undefined
-  TabChat: undefined
+import {
+  getFocusedRouteNameFromRoute,
+  NavigatorScreenParams,
+  ParamListBase,
+  useIsFocused,
+} from '@react-navigation/native'
+import { StyleSheet, Easing } from 'react-native'
+import { Appbar } from 'react-native-paper'
+import { Colors } from 'react-native/Libraries/NewAppScreen'
+
+type MainTabParams = {
+  Match: undefined
+  Map: undefined
+  Contact: undefined
+  Setting: undefined
 }
 
-const Tab = createMaterialBottomTabNavigator<MaterialBottomTabParams>()
+const Tab = createMaterialBottomTabNavigator<MainTabParams>()
 
-export default function Navigation() {
+export default function MainNavigation({ navigation, route }) {
+  const routeName = getFocusedRouteNameFromRoute(route) ?? 'Matches'
+  const { colors } = useTheme()
+
+  const styles = StyleSheet.create({
+    appBarHeader: {
+      backgroundColor: colors.inverseSurface,
+    },
+  })
+
+  React.useLayoutEffect(() => {
+    navigation.setOptions({
+      headerShown: true,
+      header: () => (
+        <Appbar.Header
+          style={styles.appBarHeader}
+          elevated={false}
+          mode="small"
+        >
+          <Appbar.Content
+            titleStyle={{
+              color: colors.onPrimary,
+            }}
+            title={routeName}
+          />
+        </Appbar.Header>
+      ),
+    })
+  }, [navigation, routeName])
+
   return (
-    <Tab.Navigator
-      initialRouteName="Match"
-      options={{
-        title: 'My home',
-      }}
-    >
+    <Tab.Navigator initialRouteName="Match">
       <Tab.Screen
-        name="Match"
+        name="Matches"
         component={MatchScreen}
         options={{
-          title: 'Match',
-          tabBarIcon: 'inbox',
-          tabBarLabel: 'Article',
+          title: 'Matches',
+          tabBarLabel: 'Matches',
           tabBarIcon: 'file-document',
-          tabBarColor: '#C9E7F8',
         }}
       />
       <Tab.Screen

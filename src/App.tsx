@@ -62,7 +62,7 @@ function App() {
       <SafeAreaProvider>
         <PaperProvider theme={theme}>
           <React.Fragment>
-            <StatusBar translucent backgroundColor="rgba(0, 0, 0, 0.24)" />
+            <StatusBar translucent backgroundColor="rgba(255, 255, 255, 1)" />
             <NavigationContainer>
               <Stack.Navigator
                 screenOptions={{

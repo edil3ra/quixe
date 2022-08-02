@@ -57,8 +57,25 @@ function ToMessage() {
   )
 }
 
-export default function MessageScreen() {
+function AppBar({ colors }) {
+  return (
+    <Appbar.Header elevated={false} mode="small">
+      <Appbar.BackAction />
+      <Appbar.Content title="Message" />
+    </Appbar.Header>
+  )
+}
+
+export default function MessageScreen({ navigation, route }) {
   const items = messages
+  const { colors } = useTheme()
+
+  React.useLayoutEffect(() => {
+    navigation.setOptions({
+      headerShown: true,
+      header: () => <AppBar colors={colors} />,
+    })
+  })
 
   return (
     <>

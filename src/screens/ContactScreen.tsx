@@ -5,8 +5,30 @@ import { Appbar } from 'react-native-paper'
 import { StyleSheet, Image, View, ScrollView } from 'react-native'
 import { Caption, List, Text, Divider } from 'react-native-paper'
 import { messages } from '~/data/mocks'
-export default function ContactScreen() {
+import { useTheme } from 'react-native-paper'
+
+function AppBar({ colors }) {
+  return (
+    <Appbar.Header elevated={false} mode="small">
+      <Appbar.Content
+        style={{ marginLeft: -40 }}
+        titleStyle={{ marginLeft: 0 }}
+        title="Messages"
+      />
+      <Appbar.Action icon="magnify" onPress={() => {}} />
+    </Appbar.Header>
+  )
+}
+
+export default function ContactScreen({ navigation, route }) {
   const items = messages
+  const { colors } = useTheme()
+  React.useLayoutEffect(() => {
+    navigation.setOptions({
+      headerShown: true,
+      header: () => <AppBar colors={colors} />,
+    })
+  })
 
   return (
     <>

@@ -1,10 +1,19 @@
+import * as React from 'react'
 import { Text, Appbar, FAB, Portal, useTheme } from 'react-native-paper'
 import { View, StyleSheet, Image, ScrollView } from 'react-native'
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
+import {
+  getFocusedRouteNameFromRoute,
+  NavigatorScreenParams,
+  ParamListBase,
+  useIsFocused,
+} from '@react-navigation/native'
+import { Colors } from 'react-native/Libraries/NewAppScreen'
 
 export default function SettingScreen({ navigation, options }) {
+  const { colors } = useTheme()
   const placeholder = `https://unsplash.it/300/300/?random&__id=1`
-  console.log(placeholder)
+
   return (
     <View style={styles.container}>
       <View style={styles.grid}>

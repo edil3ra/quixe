@@ -38,32 +38,6 @@ export default function MainNavigation({ navigation, route }) {
   const routeName = getFocusedRouteNameFromRoute(route) ?? 'Matches'
   const { colors } = useTheme()
 
-  const styles = StyleSheet.create({
-    appBarHeader: {
-      backgroundColor: colors.inverseSurface,
-    },
-  })
-
-  React.useLayoutEffect(() => {
-    navigation.setOptions({
-      headerShown: true,
-      header: () => (
-        <Appbar.Header
-          style={styles.appBarHeader}
-          elevated={false}
-          mode="small"
-        >
-          <Appbar.Content
-            titleStyle={{
-              color: colors.onPrimary,
-            }}
-            title={routeName}
-          />
-        </Appbar.Header>
-      ),
-    })
-  }, [navigation, routeName])
-
   const tabBarItemStyleActive = {
     borderTopWidth: 2,
     borderTopColor: 'orange',
@@ -76,6 +50,7 @@ export default function MainNavigation({ navigation, route }) {
 
   return (
     <Tab.Navigator
+      initialRouteName="Contact"
       screenOptions={{
         headerShown: false,
         tabBarActiveBackgroundColor: colors.onSurface,

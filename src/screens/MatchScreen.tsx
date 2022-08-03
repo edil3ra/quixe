@@ -1,5 +1,12 @@
 import * as React from 'react'
-import { Text, Appbar, FAB, Portal, useTheme } from 'react-native-paper'
+import {
+  Text,
+  Appbar,
+  FAB,
+  Portal,
+  useTheme,
+  Divider,
+} from 'react-native-paper'
 import { View, StyleSheet, Image, ScrollView } from 'react-native'
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
 import {
@@ -18,53 +25,69 @@ export default function SettingScreen({ navigation, options }) {
     <View style={styles.container}>
       <View style={styles.grid}>
         <ScrollView>
-          <Image source={{ uri: placeholder }} style={styles.photo} />
-          <Text>
-            Ante in nibh mauris, cursus mattis molestie a, iaculis at erat
-            pellentesque adipiscing commodo elit, at imperdiet dui accumsan sit?
-            Suspendisse interdum consectetur libero, id faucibus nisl tincidunt
-            eget nullam non nisi est, sit amet facilisis magna etiam tempor,
-            orci eu? In hac habitasse platea dictumst quisque sagittis, purus
-            sit amet volutpat consequat! Vitae ultricies leo integer malesuada
-            nunc vel risus commodo? Eget lorem dolor, sed viverra ipsum nunc
-            aliquet bibendum enim, facilisis gravida. Consequat, mauris nunc
-            congue nisi, vitae suscipit tellus mauris a diam maecenas sed enim
-            ut sem viverra aliquet eget sit amet tellus cras! Habitant morbi
-            tristique senectus et netus et malesuada fames ac turpis egestas sed
-            tempus, urna et pharetra pharetra, massa massa. Amet nisl suscipit
-            adipiscing bibendum? Id ornare arcu odio ut sem nulla pharetra diam
-            sit amet nisl suscipit adipiscing bibendum est ultricies integer
-            quis auctor elit sed vulputate mi sit amet mauris commodo quis
-            imperdiet. Quam lacus suspendisse faucibus interdum posuere lorem!
-            Ultrices neque ornare aenean euismod elementum nisi, quis! Non arcu
-            risus, quis varius quam quisque id diam vel quam elementum pulvinar
-            etiam non quam lacus suspendisse faucibus interdum posuere! Facilisi
-            etiam dignissim diam quis enim lobortis scelerisque fermentum dui
-            faucibus in!
-          </Text>
-        </ScrollView>
-        <>
-          <View style={styles.row}>
-            <View style={styles.fabVariant} key={1}>
-              <FAB
-                icon="close"
-                style={{ ...styles.fab, ...styles.red }}
-                onPress={() => {}}
-                size="medium"
-                color="white"
-              />
-            </View>
-            <View style={styles.fabVariant} key={2}>
-              <FAB
-                icon="check"
-                style={{ ...styles.fab, ...styles.green }}
-                onPress={() => {}}
-                size="medium"
-                color="white"
-              />
-            </View>
+          <View style={styles.header}>
+            <Image source={{ uri: placeholder }} style={styles.photo} />
+            <Text>
+              Ante in nibh mauris, cursus mattis molestie a, iaculis at erat
+              pellentesque adipiscing commodo elit, at imperdiet dui accumsan
+              sit? Suspendisse interdum consectetur libero, id faucibus nisl
+              tincidunt eget nullam non nisi est, sit amet facilisis magna etiam
+              tempor, orci eu? In hac habitasse platea dictumst quisque
+              sagittis, purus sit amet volutpat consequat! Vitae ultricies leo
+              integer malesuada nunc vel risus commodo? Eget lorem dolor, sed
+              viverra ipsum nunc aliquet bibendum enim, facilisis gravida.
+              Consequat, mauris nunc congue nisi, vitae suscipit tellus mauris a
+              diam maecenas sed enim ut sem viverra aliquet eget sit amet tellus
+              cras! Habitant morbi tristique senectus et netus et malesuada
+              fames ac turpis egestas sed tempus, urna et pharetra pharetra,
+              massa massa. Amet nisl suscipit adipiscing bibendum? Id ornare
+              arcu odio ut sem nulla pharetra diam sit amet nisl suscipit
+              adipiscing bibendum est ultricies integer quis auctor elit sed
+              vulputate mi sit amet mauris commodo quis imperdiet. Quam lacus
+              suspendisse faucibus interdum posuere lorem! Ultrices neque ornare
+              aenean euismod elementum nisi, quis! Non arcu risus, quis varius
+              quam quisque id diam vel quam elementum pulvinar etiam non quam
+              lacus suspendisse faucibus interdum posuere! Facilisi etiam
+              dignissim diam quis enim lobortis scelerisque fermentum dui
+              faucibus in! tempus, urna et pharetra pharetra, massa massa. Amet
+              nisl suscipit adipiscing bibendum? Id ornare arcu odio ut sem
+              nulla pharetra diam sit amet nisl suscipit adipiscing bibendum est
+              ultricies integer quis auctor elit sed vulputate mi sit amet
+              mauris commodo quis imperdiet. Quam lacus suspendisse faucibus
+              interdum posuere lorem! Ultrices neque ornare aenean euismod
+              elementum nisi, quis! Non arcu risus, quis varius quam quisque id
+              diam vel quam elementum pulvinar etiam non quam lacus suspendisse
+              faucibus interdum posuere! Facilisi etiam dignissim diam quis enim
+              lobortis scelerisque fermentum dui faucibus in!
+            </Text>
           </View>
-        </>
+        </ScrollView>
+        <View style={styles.fabs}>
+          <FAB
+            icon="close"
+            style={{
+              backgroundColor: colors.primary,
+              position: 'absolute',
+              bottom: 10,
+              left: 20,
+            }}
+            onPress={() => {}}
+            customSize={48}
+            color="white"
+          />
+          <FAB
+            icon="check"
+            style={{
+              backgroundColor: colors.primary,
+              position: 'absolute',
+              bottom: 10,
+              right: 20,
+            }}
+            onPress={() => {}}
+            customSize={48}
+            color="white"
+          />
+        </View>
       </View>
     </View>
   )
@@ -89,19 +112,15 @@ const styles = StyleSheet.create({
     bottom: 0,
   },
   row: {
-    marginRight: 8,
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
+    marginTop: 100,
+  },
+  header: {
+    paddingBottom: 60,
+  },
+  fabs: {
+    // marginBottom: 20,
   },
   fab: {
     margin: 8,
-  },
-  green: {
-    backgroundColor: 'green',
-    color: 'white',
-  },
-  red: {
-    backgroundColor: 'red',
   },
 })

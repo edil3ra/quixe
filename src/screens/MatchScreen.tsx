@@ -66,25 +66,27 @@ export default function SettingScreen({ navigation, options }) {
           <FAB
             icon="close"
             style={{
-              backgroundColor: colors.primary,
+              backgroundColor: 'white',
               position: 'absolute',
-              bottom: 10,
-              left: 20,
+              borderRadius: 30,
+              bottom: 12,
+              left: 64,
             }}
             onPress={() => {}}
-            customSize={48}
-            color="white"
+            customSize={64}
+            color={colors.primary}
           />
           <FAB
             icon="check"
             style={{
               backgroundColor: colors.primary,
               position: 'absolute',
-              bottom: 10,
-              right: 20,
+              borderRadius: 30,
+              bottom: 12,
+              right: 64,
             }}
             onPress={() => {}}
-            customSize={48}
+            customSize={64}
             color="white"
           />
         </View>
@@ -111,11 +113,8 @@ const styles = StyleSheet.create({
     right: 0,
     bottom: 0,
   },
-  row: {
-    marginTop: 100,
-  },
   header: {
-    paddingBottom: 60,
+    paddingBottom: 80,
   },
   fabs: {
     // marginBottom: 20,

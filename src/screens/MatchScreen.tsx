@@ -6,6 +6,7 @@ import {
   Portal,
   useTheme,
   Divider,
+  List,
 } from 'react-native-paper'
 import { View, StyleSheet, Image, ScrollView } from 'react-native'
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
@@ -27,39 +28,104 @@ export default function SettingScreen({ navigation, options }) {
         <ScrollView>
           <View style={styles.header}>
             <Image source={{ uri: placeholder }} style={styles.photo} />
-            <Text>
-              Ante in nibh mauris, cursus mattis molestie a, iaculis at erat
-              pellentesque adipiscing commodo elit, at imperdiet dui accumsan
-              sit? Suspendisse interdum consectetur libero, id faucibus nisl
-              tincidunt eget nullam non nisi est, sit amet facilisis magna etiam
-              tempor, orci eu? In hac habitasse platea dictumst quisque
-              sagittis, purus sit amet volutpat consequat! Vitae ultricies leo
-              integer malesuada nunc vel risus commodo? Eget lorem dolor, sed
-              viverra ipsum nunc aliquet bibendum enim, facilisis gravida.
-              Consequat, mauris nunc congue nisi, vitae suscipit tellus mauris a
-              diam maecenas sed enim ut sem viverra aliquet eget sit amet tellus
-              cras! Habitant morbi tristique senectus et netus et malesuada
-              fames ac turpis egestas sed tempus, urna et pharetra pharetra,
-              massa massa. Amet nisl suscipit adipiscing bibendum? Id ornare
-              arcu odio ut sem nulla pharetra diam sit amet nisl suscipit
-              adipiscing bibendum est ultricies integer quis auctor elit sed
-              vulputate mi sit amet mauris commodo quis imperdiet. Quam lacus
-              suspendisse faucibus interdum posuere lorem! Ultrices neque ornare
-              aenean euismod elementum nisi, quis! Non arcu risus, quis varius
-              quam quisque id diam vel quam elementum pulvinar etiam non quam
-              lacus suspendisse faucibus interdum posuere! Facilisi etiam
-              dignissim diam quis enim lobortis scelerisque fermentum dui
-              faucibus in! tempus, urna et pharetra pharetra, massa massa. Amet
-              nisl suscipit adipiscing bibendum? Id ornare arcu odio ut sem
-              nulla pharetra diam sit amet nisl suscipit adipiscing bibendum est
-              ultricies integer quis auctor elit sed vulputate mi sit amet
-              mauris commodo quis imperdiet. Quam lacus suspendisse faucibus
-              interdum posuere lorem! Ultrices neque ornare aenean euismod
-              elementum nisi, quis! Non arcu risus, quis varius quam quisque id
-              diam vel quam elementum pulvinar etiam non quam lacus suspendisse
-              faucibus interdum posuere! Facilisi etiam dignissim diam quis enim
-              lobortis scelerisque fermentum dui faucibus in!
-            </Text>
+            <View style={{ padding: 8 }}>
+              <View>
+                <Text variant="titleMedium">Valérie, 30</Text>
+                <Divider
+                  style={{ backgroundColor: colors.primary, marginTop: 8 }}
+                />
+              </View>
+              <View style={{ marginTop: 16 }}>
+                <Text variant="bodyMedium">
+                  Ante in nibh mauris, cursus mattis molestie a, iaculis at erat
+                  pellentesque adipiscing commodo elit, at imperdiet dui
+                  accumsan sit? Suspendisse interdum consectetur libero,{'\n'}
+                  {'\n'}
+                  id faucibus nisl tincidunt eget nullam non nisi est, sit amet
+                  Ante in nibh mauris, cursus mattis molestie a, iaculis at erat
+                  pellentesque adipiscing commodo elit, at imperdiet dui {'\n'}
+                  accumsan sit? Suspendisse interdum consectetur libero, id
+                  faucibus nisl tincidunt eget nullam non nisi est, sit amet
+                  facilisis magna etiam tempor, orci eu? In hac habitasse platea
+                  risus, quis varius quam quisque id diam vel quam elementum
+                  {'\n'}
+                  {'\n'}
+                  pulvinar etiam non quam lacus suspendisse faucibus interdum
+                  posuere! Facilisi etiam dignissim diam quis enim lobortis
+                  scelerisque fermentum dui faucibus in!
+                </Text>
+              </View>
+              <Divider
+                style={{ backgroundColor: colors.primary, marginTop: 16 }}
+              />
+              <View>
+                <List.Section>
+                  <List.Item
+                    style={{ padding: 0, height: 32 }}
+                    titleStyle={{ fontSize: 14, marginLeft: -10 }}
+                    left={(props) => (
+                      <List.Icon
+                        {...props}
+                        style={{ padding: 0, margin: 0, marginLeft: -10 }}
+                        color={colors.primary}
+                        icon={() => (
+                          <MaterialCommunityIcons
+                            name="map-marker"
+                            color={colors.primary}
+                            size={20}
+                          />
+                        )}
+                      />
+                    )}
+                    title="Located in Antwerp, Belgium"
+                  />
+                  <List.Item
+                    style={{ padding: 0, height: 32 }}
+                    titleStyle={{ fontSize: 14, marginLeft: -10 }}
+                    left={(props) => (
+                      <List.Icon
+                        {...props}
+                        style={{
+                          padding: 0,
+                          margin: 0,
+                          marginLeft: -10,
+                        }}
+                        icon={() => (
+                          <MaterialCommunityIcons
+                            name="home"
+                            color={colors.primary}
+                            size={20}
+                          />
+                        )}
+                      />
+                    )}
+                    title="From Deurne, Belgium"
+                  />
+                  <List.Item
+                    style={{ padding: 0, height: 32 }}
+                    titleStyle={{ fontSize: 14, marginLeft: -10 }}
+                    left={(props) => (
+                      <List.Icon
+                        {...props}
+                        style={{
+                          padding: 0,
+                          margin: 0,
+                          marginLeft: -10,
+                        }}
+                        icon={() => (
+                          <MaterialCommunityIcons
+                            name="web"
+                            color={colors.primary}
+                            size={20}
+                          />
+                        )}
+                      />
+                    )}
+                    title="English, French, Netherlands"
+                  />
+                </List.Section>
+              </View>
+            </View>
           </View>
         </ScrollView>
         <View style={styles.fabs}>
@@ -99,7 +165,6 @@ const styles = StyleSheet.create({
   container: { flex: 1 },
   grid: {
     flex: 1,
-    padding: 4,
   },
   photo: {
     flex: 1,
@@ -116,9 +181,7 @@ const styles = StyleSheet.create({
   header: {
     paddingBottom: 80,
   },
-  fabs: {
-    // marginBottom: 20,
-  },
+  fabs: {},
   fab: {
     margin: 8,
   },

@@ -1,13 +1,15 @@
 import * as React from 'react'
+
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
+import { useTheme } from 'react-native-paper'
+
 import MatchScreen from '~/screens/MatchScreen'
 import ContactScreen from '~/screens/ContactScreen'
 import MessageScreen from '~/screens/MessageScreen'
 import MapScreen from '~/screens/MapScreen'
 import SettingScreen from '~/screens/SettingScreen'
 import { createMaterialBottomTabNavigator } from '~/vendors/material-bottom-tabs'
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
-import { useTheme } from 'react-native-paper'
 
 import {
   getFocusedRouteNameFromRoute,
@@ -35,17 +37,17 @@ const getTabBarIcon =
 const Tab = createBottomTabNavigator<BottomTabParams>()
 
 export default function MainNavigation({ navigation, route }) {
-  const routeName = getFocusedRouteNameFromRoute(route) ?? 'Matches'
+  const routeName = getFocusedRouteNameFromRoute(route) ?? 'Contact'
   const { colors } = useTheme()
 
   const tabBarItemStyleActive = {
-    borderTopWidth: 2,
-    borderTopColor: 'orange',
+    borderTopWidth: 1,
+    borderTopColor: colors.primary,
   }
 
   const tabBarItemStyleInactive = {
-    borderTopWidth: 2,
-    borderTopColor: colors.surfaceVariant,
+    borderTopWidth: 1,
+    borderTopColor: colors.secondary,
   }
 
   return (
@@ -53,10 +55,9 @@ export default function MainNavigation({ navigation, route }) {
       initialRouteName="Contact"
       screenOptions={{
         headerShown: false,
-        tabBarActiveBackgroundColor: colors.onSurface,
-        tabBarInactiveBackgroundColor: colors.onSurfaceVariant,
-        tabBarActiveTintColor: colors.surface,
-        tabBarInactiveTintColor: colors.surfaceVariant,
+        tabBarShowLabel: false,
+        tabBarActiveTintColor: colors.primary,
+        tabBarInactiveTintColor: colors.secondary,
         tabBarLabelPosition: 'below-icon',
         tabBarLabelStyle: { fontSize: 14, paddingBottom: 1 },
       }}
@@ -98,7 +99,7 @@ export default function MainNavigation({ navigation, route }) {
         }}
       />
       <Tab.Screen
-        name="Setting"
+        name="Settings"
         component={SettingScreen}
         options={{
           title: 'Settings',

@@ -13,6 +13,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack'
 
 import MainNavigation from '~/navigation/MainNavigation'
 import useCachedResources from '~/hooks/useCachedResources'
+
 const theme = {
   ...DefaultTheme,
   colors: {

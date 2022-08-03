@@ -1,21 +1,45 @@
+import * as React from 'react'
+
 import { format } from 'date-fns'
 
-import * as React from 'react'
-import { Appbar } from 'react-native-paper'
 import { StyleSheet, Image, View, ScrollView } from 'react-native'
-import { Caption, List, Text, Divider } from 'react-native-paper'
+import {
+  Appbar,
+  Caption,
+  List,
+  Text,
+  Divider,
+  useTheme,
+} from 'react-native-paper'
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
 import { messages } from '~/data/mocks'
-import { useTheme } from 'react-native-paper'
 
 function AppBar({ colors }) {
   return (
-    <Appbar.Header elevated={false} mode="small">
+    <Appbar.Header
+      mode="small"
+      style={{
+        borderBottomColor: colors.primary,
+        borderBottomWidth: 1,
+      }}
+    >
       <Appbar.Content
         style={{ marginLeft: -40 }}
-        titleStyle={{ marginLeft: 0 }}
+        titleStyle={{ marginLeft: 0, color: colors.primary }}
         title="Messages"
       />
-      <Appbar.Action icon="magnify" onPress={() => {}} />
+      {/* <Appbar.Action icon="magnify" color="red" onPress={() => {}} /> */}
+      <Appbar.Action
+        icon={() => (
+          <MaterialCommunityIcons
+            name="magnify"
+            color={colors.primary}
+            size={26}
+          />
+        )}
+        color="red"
+        onPress={() => {}}
+      />
     </Appbar.Header>
   )
 }

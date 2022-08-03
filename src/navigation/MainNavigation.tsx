@@ -33,7 +33,6 @@ const getTabBarIcon =
   ({ color, size }: { color: string; size: number }) =>
     <MaterialCommunityIcons name={name} color={color} size={22} />
 
-// const Tab = createMaterialBottomTabNavigator<MainTabParams>()
 const Tab = createBottomTabNavigator<BottomTabParams>()
 
 export default function MainNavigation({ navigation, route }) {

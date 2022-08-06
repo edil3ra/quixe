@@ -102,7 +102,7 @@ export default function MainNavigation({ navigation, route }) {
         component={SettingScreen}
         options={{
           title: 'Settings',
-          tabBarIcon: getTabBarIcon('cogs'),
+          tabBarIcon: getTabBarIcon('account'),
           tabBarItemStyle:
             routeName == 'Settings'
               ? tabBarItemStyleActive

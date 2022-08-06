@@ -19,21 +19,20 @@ function AppBar({ colors }) {
     <Appbar.Header
       mode="small"
       style={{
-        borderBottomColor: colors.primary,
+        borderBottomColor: colors.secondary,
         borderBottomWidth: 1,
       }}
     >
       <Appbar.Content
         style={{ marginLeft: -40 }}
-        titleStyle={{ marginLeft: 0, color: colors.primary }}
+        titleStyle={{ marginLeft: 0, color: colors.secondary }}
         title="Messages"
       />
-      {/* <Appbar.Action icon="magnify" color="red" onPress={() => {}} /> */}
       <Appbar.Action
         icon={() => (
           <MaterialCommunityIcons
             name="magnify"
-            color={colors.primary}
+            color={colors.secondary}
             size={26}
           />
         )}

@@ -18,7 +18,6 @@ import {
   useIsFocused,
 } from '@react-navigation/native'
 import { StyleSheet, Easing } from 'react-native'
-import { Appbar } from 'react-native-paper'
 import { Colors } from 'react-native/Libraries/NewAppScreen'
 
 type MainTabParams = {
@@ -51,7 +50,7 @@ export default function MainNavigation({ navigation, route }) {
 
   return (
     <Tab.Navigator
-      initialRouteName="Contact"
+      initialRouteName="Settings"
       screenOptions={{
         headerShown: false,
         tabBarShowLabel: false,

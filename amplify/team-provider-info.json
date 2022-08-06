@@ -1,0 +1,15 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-quixe-dev-181804-authRole",
+      "UnauthRoleArn": "arn:aws:iam::164424512143:role/amplify-quixe-dev-181804-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::164424512143:role/amplify-quixe-dev-181804-authRole",
+      "Region": "eu-central-1",
+      "DeploymentBucketName": "amplify-quixe-dev-181804-deployment",
+      "UnauthRoleName": "amplify-quixe-dev-181804-unauthRole",
+      "StackName": "amplify-quixe-dev-181804",
+      "StackId": "arn:aws:cloudformation:eu-central-1:164424512143:stack/amplify-quixe-dev-181804/5a5eacc0-15a3-11ed-960f-0a789393358a",
+      "AmplifyAppId": "d3ay2xmzjuwtec"
+    }
+  }
+}

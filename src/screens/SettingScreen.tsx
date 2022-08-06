@@ -8,40 +8,85 @@ import {
   Text,
   Divider,
   useTheme,
+  IconButton,
+  Avatar,
 } from 'react-native-paper'
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
 import MainLayoutContainer from '~/components/MainLayoutContainer'
 
-function AppBar({ colors }) {
-  return (
-    <Appbar.Header
-      mode="small"
-      style={{
-        borderBottomColor: colors.secondary,
-        borderBottomWidth: 1,
-      }}
-    >
-      <Appbar.Content
-        style={{ marginLeft: -40 }}
-        titleStyle={{ marginLeft: 0, color: colors.secondary }}
-        title="My Account"
-      />
-    </Appbar.Header>
-  )
-}
-
 export default function SettingsScreen({ navigation, route }) {
-  const { colors } = useTheme()
-  React.useLayoutEffect(() => {
-    navigation.setOptions({
-      headerShown: true,
-      header: () => <AppBar colors={colors} />,
-    })
-  })
+  const theme = useTheme()
 
   return (
-    <MainLayoutContainer>
-      <Text>Hello</Text>
+    <MainLayoutContainer withNavBar={false}>
+      <View
+        style={{
+          ...styles.userContainer,
+          backgroundColor: theme.colors.primary,
+        }}
+      >
+        <View style={styles.profileHeader}>
+          <View>
+            <Avatar.Image
+              style={styles.profileAvatar}
+              source={require('~/assets/images/avatar.png')}
+            />
+          </View>
+          <View style={styles.profileHeaderInner}>
+            <IconButton
+              iconColor={theme.colors.primary}
+              containerColor="white"
+              icon="pencil"
+              size={14}
+            />
+          </View>
+        </View>
+        <View style={styles.profileContent}>
+          <Text style={styles.profileText} variant="labelLarge">
+            Vincent, 32
+          </Text>
+          <Text style={styles.profileText} variant="labelMedium">
+            ce que je recherche comme taf
+          </Text>
+        </View>
+      </View>
     </MainLayoutContainer>
   )
 }
+
+const styles = StyleSheet.create({
+  userContainer: {
+    flexDirection: 'column',
+    alignItems: 'center',
+    paddingVertical: 20,
+  },
+  profileHeaderInner: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    justifyContent: 'center',
+    alignItems: 'center',
+    top: 50,
+    left: 50,
+  },
+  profileAvatar: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderColor: 'white',
+    borderRadius: 100,
+    borderWidth: 34,
+    borderStyle: 'solid',
+  },
+  profileHeader: {
+    marginBottom: 10,
+  },
+  profileContent: {
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  profileText: {
+    color: 'white',
+  },
+})

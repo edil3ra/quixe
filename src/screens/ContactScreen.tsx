@@ -1,7 +1,4 @@
 import * as React from 'react'
-
-import { format } from 'date-fns'
-
 import { StyleSheet, Image, View, ScrollView } from 'react-native'
 import {
   Appbar,
@@ -12,6 +9,10 @@ import {
   useTheme,
 } from 'react-native-paper'
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
+import MainLayoutContainer from '~/components/MainLayoutContainer'
+
+import { format } from 'date-fns'
+
 import { messages } from '~/data/mocks'
 
 function AppBar({ colors }) {
@@ -54,57 +55,55 @@ export default function ContactScreen({ navigation, route }) {
   })
 
   return (
-    <>
-      <ScrollView>
-        <List.Section>
-          <List.Subheader>Recent Messages</List.Subheader>
-          {items.map((item) => {
-            return (
-              <>
-                <List.Item
-                  left={() => (
-                    <Image
-                      source={require('~/assets/images/favicon.png')}
-                      style={styles.image}
-                    />
-                  )}
-                  title={({ color: titleColor, fontSize }) => (
-                    <View
-                      style={[styles.container, styles.row, styles.customTitle]}
+    <MainLayoutContainer withScrollView>
+      <List.Section>
+        <List.Subheader>Recent Messages</List.Subheader>
+        {items.map((item) => {
+          return (
+            <>
+              <List.Item
+                left={() => (
+                  <Image
+                    source={require('~/assets/images/favicon.png')}
+                    style={styles.image}
+                  />
+                )}
+                title={({ color: titleColor, fontSize }) => (
+                  <View
+                    style={[styles.container, styles.row, styles.customTitle]}
+                  >
+                    <Text style={{ color: titleColor, fontSize }}>
+                      {item.name}
+                    </Text>
+                    <Caption>
+                      {format(new Date(item.createdAt), 'yy-mm-dd')}
+                    </Caption>
+                  </View>
+                )}
+                description={({ color: descriptionColor, fontSize }) => (
+                  <View
+                    style={[
+                      styles.container,
+                      styles.column,
+                      styles.description,
+                    ]}
+                  >
+                    <Text
+                      numberOfLines={1}
+                      ellipsizeMode={'tail'}
+                      style={{ color: descriptionColor, fontSize }}
                     >
-                      <Text style={{ color: titleColor, fontSize }}>
-                        {item.name}
-                      </Text>
-                      <Caption>
-                        {format(new Date(item.createdAt), 'yy-mm-dd')}
-                      </Caption>
-                    </View>
-                  )}
-                  description={({ color: descriptionColor, fontSize }) => (
-                    <View
-                      style={[
-                        styles.container,
-                        styles.column,
-                        styles.description,
-                      ]}
-                    >
-                      <Text
-                        numberOfLines={1}
-                        ellipsizeMode={'tail'}
-                        style={{ color: descriptionColor, fontSize }}
-                      >
-                        {item.content}
-                      </Text>
-                    </View>
-                  )}
-                />
-                <Divider bold />
-              </>
-            )
-          })}
-        </List.Section>
-      </ScrollView>
-    </>
+                      {item.content}
+                    </Text>
+                  </View>
+                )}
+              />
+              <Divider bold />
+            </>
+          )
+        })}
+      </List.Section>
+    </MainLayoutContainer>
   )
 }
 

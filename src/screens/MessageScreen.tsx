@@ -1,16 +1,15 @@
-import { format } from 'date-fns'
+import * as React from 'react'
+import { StyleSheet, View, ScrollView } from 'react-native'
+import { Appbar, Text, Divider, Surface, useTheme } from 'react-native-paper'
 import Ionicons from '@expo/vector-icons/Ionicons'
 
-import * as React from 'react'
-import { Appbar } from 'react-native-paper'
-import { StyleSheet, View, ScrollView } from 'react-native'
-import { useTheme } from 'react-native-paper'
+import { format } from 'date-fns'
 
-import { Text, Divider, Surface } from 'react-native-paper'
+import MainLayoutContainer from '~/components/MainLayoutContainer'
 import { messages } from '~/data/mocks'
 
 function FromMessage() {
-  const { colors } = useTheme()
+  const theme = useTheme()
   return (
     <View style={styles.row}>
       <Surface elevation="1">
@@ -21,7 +20,7 @@ function FromMessage() {
         </Text>
         <View style={styles.messageFooter}>
           <View style={styles.messageDate}>
-            <Text variant="bodySmall" style={{ color: colors.secondary }}>
+            <Text variant="bodySmall" style={{ color: theme.colors.secondary }}>
               {format(new Date('2016-11-15 03:23:53'), "hh:mm aaaaa'm'")}
             </Text>
           </View>
@@ -32,7 +31,7 @@ function FromMessage() {
 }
 
 function ToMessage() {
-  const { colors } = useTheme()
+  const theme = useTheme()
   return (
     <View style={styles.row}>
       <Surface elevation="5">
@@ -47,7 +46,7 @@ function ToMessage() {
             {/* <Ionicons name="md-checkmark" size={20} color="green" /> */}
           </View>
           <View style={styles.messageMark}>
-            <Text variant="bodySmall" style={{ color: colors.secondary }}>
+            <Text variant="bodySmall" style={{ color: theme.colors.secondary }}>
               {format(new Date('2016-11-15 03:23:53'), "hh:mm aaaaa'm'")}
             </Text>
           </View>
@@ -68,39 +67,37 @@ function AppBar({ colors }) {
 
 export default function MessageScreen({ navigation, route }) {
   const items = messages
-  const { colors } = useTheme()
+  const theme = useTheme()
 
   React.useLayoutEffect(() => {
     navigation.setOptions({
       headerShown: true,
-      header: () => <AppBar colors={colors} />,
+      header: () => <AppBar colors={theme.colors} />,
     })
   })
 
   return (
-    <>
-      <ScrollView>
-        <View style={styles.container}>
-          <View style={styles.left}>
-            <FromMessage />
-            <FromMessage />
-          </View>
-
-          <View style={styles.right}>
-            <ToMessage />
-          </View>
-          <View style={styles.left}>
-            <FromMessage />
-          </View>
-          <View style={styles.right}>
-            <ToMessage />
-            <ToMessage />
-            <ToMessage />
-          </View>
-          <Divider />
+    <MainLayoutContainer withScrollView>
+      <View style={styles.container}>
+        <View style={styles.left}>
+          <FromMessage />
+          <FromMessage />
         </View>
-      </ScrollView>
-    </>
+
+        <View style={styles.right}>
+          <ToMessage />
+        </View>
+        <View style={styles.left}>
+          <FromMessage />
+        </View>
+        <View style={styles.right}>
+          <ToMessage />
+          <ToMessage />
+          <ToMessage />
+        </View>
+        <Divider />
+      </View>
+    </MainLayoutContainer>
   )
 }
 

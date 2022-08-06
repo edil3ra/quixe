@@ -16,10 +16,10 @@ import {
   ParamListBase,
   useIsFocused,
 } from '@react-navigation/native'
-import { Colors } from 'react-native/Libraries/NewAppScreen'
+import MainLayoutContainer from '~/components/MainLayoutContainer'
 
 export default function SettingScreen({ navigation, options }) {
-  const { colors } = useTheme()
+  const theme = useTheme()
   const placeholder = `https://unsplash.it/300/300/?random&__id=1`
 
   return (
@@ -32,7 +32,10 @@ export default function SettingScreen({ navigation, options }) {
               <View>
                 <Text variant="titleMedium">Valérie, 30</Text>
                 <Divider
-                  style={{ backgroundColor: colors.primary, marginTop: 8 }}
+                  style={{
+                    backgroundColor: theme.colors.primary,
+                    marginTop: 8,
+                  }}
                 />
               </View>
               <View style={{ marginTop: 16 }}>
@@ -56,7 +59,7 @@ export default function SettingScreen({ navigation, options }) {
                 </Text>
               </View>
               <Divider
-                style={{ backgroundColor: colors.primary, marginTop: 16 }}
+                style={{ backgroundColor: theme.colors.primary, marginTop: 16 }}
               />
               <View>
                 <List.Section>
@@ -67,11 +70,11 @@ export default function SettingScreen({ navigation, options }) {
                       <List.Icon
                         {...props}
                         style={{ padding: 0, margin: 0, marginLeft: -10 }}
-                        color={colors.primary}
+                        color={theme.colors.primary}
                         icon={() => (
                           <MaterialCommunityIcons
                             name="map-marker"
-                            color={colors.primary}
+                            color={theme.colors.primary}
                             size={20}
                           />
                         )}
@@ -93,7 +96,7 @@ export default function SettingScreen({ navigation, options }) {
                         icon={() => (
                           <MaterialCommunityIcons
                             name="home"
-                            color={colors.primary}
+                            color={theme.colors.primary}
                             size={20}
                           />
                         )}
@@ -115,7 +118,7 @@ export default function SettingScreen({ navigation, options }) {
                         icon={() => (
                           <MaterialCommunityIcons
                             name="web"
-                            color={colors.primary}
+                            color={theme.colors.primary}
                             size={20}
                           />
                         )}
@@ -140,12 +143,12 @@ export default function SettingScreen({ navigation, options }) {
             }}
             onPress={() => {}}
             customSize={64}
-            color={colors.primary}
+            color={theme.colors.primary}
           />
           <FAB
             icon="check"
             style={{
-              backgroundColor: colors.primary,
+              backgroundColor: theme.colors.primary,
               position: 'absolute',
               borderRadius: 30,
               bottom: 12,

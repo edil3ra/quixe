@@ -10,7 +10,7 @@ import {
   useTheme,
 } from 'react-native-paper'
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
-import { messages } from '~/data/mocks'
+import MainLayoutContainer from '~/components/MainLayoutContainer'
 
 function AppBar({ colors }) {
   return (
@@ -31,7 +31,6 @@ function AppBar({ colors }) {
 }
 
 export default function SettingsScreen({ navigation, route }) {
-  const items = messages
   const { colors } = useTheme()
   React.useLayoutEffect(() => {
     navigation.setOptions({
@@ -41,8 +40,8 @@ export default function SettingsScreen({ navigation, route }) {
   })
 
   return (
-    <>
+    <MainLayoutContainer>
       <Text>Hello</Text>
-    </>
+    </MainLayoutContainer>
   )
 }

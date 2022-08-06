@@ -10,6 +10,7 @@ import {
   useTheme,
   IconButton,
   Avatar,
+  TouchableRipple,
 } from 'react-native-paper'
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
 import MainLayoutContainer from '~/components/MainLayoutContainer'
@@ -21,44 +22,60 @@ export default function SettingsScreen({ navigation, route }) {
     <MainLayoutContainer withNavBar={false}>
       <View
         style={{
-          ...styles.userContainer,
           backgroundColor: theme.colors.primary,
         }}
       >
-        <View style={styles.profileHeader}>
-          <View>
-            <Avatar.Image
-              style={styles.profileAvatar}
-              source={require('~/assets/images/avatar.png')}
-            />
+        <TouchableRipple
+          style={styles.ripple}
+          onPress={() => {}}
+          rippleColor={theme.colors.tertiary}
+        >
+          <View
+            style={{
+              ...styles.userContainer,
+            }}
+          >
+            <View style={styles.profileHeader}>
+              <View>
+                <Avatar.Image
+                  style={styles.profileAvatar}
+                  source={require('~/assets/images/avatar.png')}
+                />
+              </View>
+              <View style={styles.profileHeaderInner}>
+                <IconButton
+                  iconColor={theme.colors.primary}
+                  containerColor="white"
+                  icon="pencil"
+                  size={14}
+                />
+              </View>
+            </View>
+            <View style={styles.profileContent}>
+              <Text style={styles.profileText} variant="labelLarge">
+                Vincent, 32
+              </Text>
+              <Text style={styles.profileText} variant="labelMedium">
+                ce que je recherche comme taf
+              </Text>
+            </View>
           </View>
-          <View style={styles.profileHeaderInner}>
-            <IconButton
-              iconColor={theme.colors.primary}
-              containerColor="white"
-              icon="pencil"
-              size={14}
-            />
-          </View>
-        </View>
-        <View style={styles.profileContent}>
-          <Text style={styles.profileText} variant="labelLarge">
-            Vincent, 32
-          </Text>
-          <Text style={styles.profileText} variant="labelMedium">
-            ce que je recherche comme taf
-          </Text>
-        </View>
+        </TouchableRipple>
       </View>
     </MainLayoutContainer>
   )
 }
 
 const styles = StyleSheet.create({
+  ripple: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
   userContainer: {
     flexDirection: 'column',
     alignItems: 'center',
-    paddingVertical: 20,
+    paddingVertical: 30,
   },
   profileHeaderInner: {
     position: 'absolute',

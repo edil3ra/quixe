@@ -7,6 +7,7 @@ import {
   Text,
   Divider,
   useTheme,
+  TouchableRipple,
 } from 'react-native-paper'
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
 import MainLayoutContainer from '~/components/MainLayoutContainer'
@@ -15,29 +16,28 @@ import { format } from 'date-fns'
 
 import { messages } from '~/data/mocks'
 
-function AppBar({ colors }) {
+function AppBar({ theme }) {
   return (
     <Appbar.Header
       mode="small"
       style={{
-        borderBottomColor: colors.secondary,
+        borderBottomColor: theme.colors.secondary,
         borderBottomWidth: 1,
       }}
     >
       <Appbar.Content
         style={{ marginLeft: -40 }}
-        titleStyle={{ marginLeft: 0, color: colors.secondary }}
+        titleStyle={{ marginLeft: 0, color: theme.colors.secondary }}
         title="Messages"
       />
       <Appbar.Action
         icon={() => (
           <MaterialCommunityIcons
             name="magnify"
-            color={colors.secondary}
+            color={theme.colors.secondary}
             size={26}
           />
         )}
-        color="red"
         onPress={() => {}}
       />
     </Appbar.Header>
@@ -46,58 +46,70 @@ function AppBar({ colors }) {
 
 export default function ContactScreen({ navigation, route }) {
   const items = messages
-  const { colors } = useTheme()
+  const theme = useTheme()
   React.useLayoutEffect(() => {
     navigation.setOptions({
       headerShown: true,
-      header: () => <AppBar colors={colors} />,
+      header: () => <AppBar theme={theme} />,
     })
   })
 
   return (
     <MainLayoutContainer withScrollView>
       <List.Section>
-        <List.Subheader>Recent Messages</List.Subheader>
+        <List.Subheader style={{ color: 'grey', paddingVertical: 10 }}>
+          Recent Messages
+        </List.Subheader>
         {items.map((item) => {
           return (
             <>
-              <List.Item
-                left={() => (
-                  <Image
-                    source={require('~/assets/images/favicon.png')}
-                    style={styles.image}
-                  />
-                )}
-                title={({ color: titleColor, fontSize }) => (
-                  <View
-                    style={[styles.container, styles.row, styles.customTitle]}
-                  >
-                    <Text style={{ color: titleColor, fontSize }}>
-                      {item.name}
-                    </Text>
-                    <Caption>
-                      {format(new Date(item.createdAt), 'yy-mm-dd')}
-                    </Caption>
-                  </View>
-                )}
-                description={({ color: descriptionColor, fontSize }) => (
-                  <View
-                    style={[
-                      styles.container,
-                      styles.column,
-                      styles.description,
-                    ]}
-                  >
-                    <Text
-                      numberOfLines={1}
-                      ellipsizeMode={'tail'}
-                      style={{ color: descriptionColor, fontSize }}
+              <TouchableRipple
+                style={styles.ripple}
+                onPress={() => {}}
+                rippleColor={theme.colors.tertiary}
+              >
+                <List.Item
+                  left={() => (
+                    <Image
+                      source={require('~/assets/images/avatar.png')}
+                      style={styles.image}
+                    />
+                  )}
+                  title={({ color: titleColor, fontSize }) => (
+                    <View
+                      style={[styles.container, styles.row, styles.customTitle]}
                     >
-                      {item.content}
-                    </Text>
-                  </View>
-                )}
-              />
+                      <Text
+                        variant="titleSmall"
+                        style={{ color: titleColor, fontSize }}
+                      >
+                        {item.name}
+                      </Text>
+                      <Caption>
+                        {format(new Date(item.createdAt), 'yy-mm-dd')}
+                      </Caption>
+                    </View>
+                  )}
+                  description={({ color: descriptionColor, fontSize }) => (
+                    <View
+                      style={[
+                        styles.container,
+                        styles.column,
+                        styles.description,
+                      ]}
+                    >
+                      <Text
+                        variant="bodySmall"
+                        numberOfLines={1}
+                        ellipsizeMode={'tail'}
+                        style={{ color: descriptionColor, fontSize }}
+                      >
+                        {item.content}
+                      </Text>
+                    </View>
+                  )}
+                />
+              </TouchableRipple>
               <Divider bold />
             </>
           )
@@ -115,6 +127,7 @@ const styles = StyleSheet.create({
     height: 40,
     width: 40,
     margin: 8,
+    borderRadius: 100,
   },
   row: {
     flexDirection: 'row',

@@ -12,7 +12,6 @@ import {
   Avatar,
   TouchableRipple,
 } from 'react-native-paper'
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
 import MainLayoutContainer from '~/components/MainLayoutContainer'
 
 export default function SettingsScreen({ navigation, route }) {
@@ -38,6 +37,7 @@ export default function SettingsScreen({ navigation, route }) {
             <View style={styles.profileHeader}>
               <View>
                 <Avatar.Image
+                  size={80}
                   style={styles.profileAvatar}
                   source={require('~/assets/images/avatar.png')}
                 />
@@ -62,6 +62,64 @@ export default function SettingsScreen({ navigation, route }) {
           </View>
         </TouchableRipple>
       </View>
+      <View>
+        <List.Section style={{ marginTop: 0 }}>
+          <TouchableRipple
+            onPress={() => {}}
+            rippleColor={theme.colors.tertiary}
+          >
+            <List.Item
+              left={(props) => (
+                <List.Icon {...props} color="#0096FF" icon="account-cog" />
+              )}
+              descriptionStyle={{ fontSize: 12 }}
+              title="My Preferences"
+              description="Choose where and when you want to work"
+            />
+          </TouchableRipple>
+          <Divider bold />
+          <TouchableRipple
+            onPress={() => {}}
+            rippleColor={theme.colors.tertiary}
+          >
+            <List.Item
+              left={(props) => (
+                <List.Icon {...props} color="#EE4B2B" icon="account-plus" />
+              )}
+              descriptionStyle={{ fontSize: 12 }}
+              title="Invite Friends"
+              description="Invite your friends"
+            />
+          </TouchableRipple>
+          <Divider bold />
+          <TouchableRipple
+            onPress={() => {}}
+            rippleColor={theme.colors.tertiary}
+          >
+            <List.Item
+              left={(props) => <List.Icon {...props} color="grey" icon="cog" />}
+              descriptionStyle={{ fontSize: 12 }}
+              title="App Settings"
+              description="Manage your notifications, connected accounts..."
+            />
+          </TouchableRipple>
+          <Divider bold />
+          <TouchableRipple
+            onPress={() => {}}
+            rippleColor={theme.colors.tertiary}
+          >
+            <List.Item
+              left={(props) => (
+                <List.Icon {...props} color="#4CBB17" icon="help-circle" />
+              )}
+              descriptionStyle={{ fontSize: 12 }}
+              title="Need Help?"
+              description="Faq, tutorial and contact"
+            />
+          </TouchableRipple>
+          <Divider bold />
+        </List.Section>
+      </View>
     </MainLayoutContainer>
   )
 }
@@ -75,7 +133,7 @@ const styles = StyleSheet.create({
   userContainer: {
     flexDirection: 'column',
     alignItems: 'center',
-    paddingVertical: 30,
+    paddingVertical: 50,
   },
   profileHeaderInner: {
     position: 'absolute',
@@ -93,7 +151,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     borderColor: 'white',
     borderRadius: 100,
-    borderWidth: 34,
+    borderWidth: 42,
     borderStyle: 'solid',
   },
   profileHeader: {

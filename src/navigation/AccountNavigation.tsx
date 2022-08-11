@@ -1,8 +1,8 @@
 import * as React from 'react'
 
 import { View, ScrollView } from 'react-native'
-import AccountScreen from '~/screens/AccountScreen'
-import SettingsScreen from '~/screens/SettingsScreen'
+import AccountScreen from '~/screens/accounts/AccountScreen'
+import SettingsScreen from '~/screens/accounts/SettingsScreen'
 
 import {
   createNativeStackNavigator,

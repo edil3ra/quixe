@@ -9,7 +9,6 @@ import ContactScreen from '~/screens/ContactScreen'
 import MessageScreen from '~/screens/MessageScreen'
 import MapScreen from '~/screens/MapScreen'
 import AccountScreen from '~/screens/AccountScreen'
-import { createMaterialBottomTabNavigator } from '~/vendors/material-bottom-tabs'
 
 import {
   getFocusedRouteNameFromRoute,

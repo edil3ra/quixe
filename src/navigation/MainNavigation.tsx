@@ -19,7 +19,7 @@ import {
 import { StyleSheet, Easing } from 'react-native'
 import { Colors } from 'react-native/Libraries/NewAppScreen'
 
-type MainTabParams = {
+export type MainTabParams = {
   Match: undefined
   Map: undefined
   Contact: undefined
@@ -31,7 +31,7 @@ const getTabBarIcon =
   ({ color, size }: { color: string; size: number }) =>
     <MaterialCommunityIcons name={name} color={color} size={22} />
 
-const Tab = createBottomTabNavigator<BottomTabParams>()
+const Tab = createBottomTabNavigator<MainTabParams>()
 
 export default function MainNavigation({ navigation, route }) {
   const routeName = getFocusedRouteNameFromRoute(route) ?? 'Contact'

@@ -8,7 +8,7 @@ import MatchScreen from '~/screens/MatchScreen'
 import ContactScreen from '~/screens/ContactScreen'
 import MessageScreen from '~/screens/MessageScreen'
 import MapScreen from '~/screens/MapScreen'
-import SettingScreen from '~/screens/SettingScreen'
+import AccountScreen from '~/screens/AccountScreen'
 import { createMaterialBottomTabNavigator } from '~/vendors/material-bottom-tabs'
 
 import {
@@ -24,7 +24,7 @@ type MainTabParams = {
   Match: undefined
   Map: undefined
   Contact: undefined
-  Setting: undefined
+  Account: undefined
 }
 
 const getTabBarIcon =
@@ -50,7 +50,7 @@ export default function MainNavigation({ navigation, route }) {
 
   return (
     <Tab.Navigator
-      initialRouteName="Settings"
+      initialRouteName="Accounts"
       screenOptions={{
         headerShown: false,
         tabBarShowLabel: false,
@@ -97,13 +97,13 @@ export default function MainNavigation({ navigation, route }) {
         }}
       />
       <Tab.Screen
-        name="Settings"
-        component={SettingScreen}
+        name="Accounts"
+        component={AccountScreen}
         options={{
-          title: 'Settings',
+          title: 'Accounts',
           tabBarIcon: getTabBarIcon('account'),
           tabBarItemStyle:
-            routeName == 'Settings'
+            routeName == 'Accounts'
               ? tabBarItemStyleActive
               : tabBarItemStyleInactive,
         }}

@@ -14,7 +14,7 @@ import {
 } from 'react-native-paper'
 import MainLayoutContainer from '~/components/MainLayoutContainer'
 
-export default function SettingsScreen({ navigation, route }) {
+export default function AccountScreen({ navigation, route }) {
   const theme = useTheme()
 
   return (
@@ -99,7 +99,7 @@ export default function SettingsScreen({ navigation, route }) {
             <List.Item
               left={(props) => <List.Icon {...props} color="grey" icon="cog" />}
               descriptionStyle={{ fontSize: 12 }}
-              title="App Settings"
+              title="App Account"
               description="Manage your notifications, connected accounts..."
             />
           </TouchableRipple>

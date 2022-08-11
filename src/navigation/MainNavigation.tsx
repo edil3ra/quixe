@@ -99,6 +99,11 @@ export default function MainNavigation({ navigation, route }) {
       <Tab.Screen
         name="AccountNavigation"
         component={AccountNavigation}
+        listeners={({ navigation, route }) => ({
+          tabPress: (e) => {
+            navigation.navigate(route.name)
+          },
+        })}
         options={{
           title: 'Accounts',
           tabBarIcon: getTabBarIcon('account'),

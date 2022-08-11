@@ -52,7 +52,11 @@ const theme = {
 
 export type ThemeOverride = typeof theme
 
-const Stack = createNativeStackNavigator<any>()
+export type SimpleStackParams = {
+  MainNavigation: undefined
+}
+
+const Stack = createNativeStackNavigator<SimpleStackParams>()
 
 function App() {
   const isLoadingComplete = useCachedResources()
@@ -71,8 +75,7 @@ function App() {
                 }}
               >
                 <Stack.Screen
-                  name="Navigation"
-                  key={'navigation'}
+                  name="MainNavigation"
                   component={MainNavigation}
                 />
               </Stack.Navigator>

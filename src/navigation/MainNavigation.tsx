@@ -9,6 +9,7 @@ import ContactScreen from '~/screens/ContactScreen'
 import MessageScreen from '~/screens/MessageScreen'
 import MapScreen from '~/screens/MapScreen'
 import AccountScreen from '~/screens/AccountScreen'
+import AccountNavigation from '~/navigation/AccountNavigation'
 
 import {
   getFocusedRouteNameFromRoute,
@@ -20,10 +21,10 @@ import { StyleSheet, Easing } from 'react-native'
 import { Colors } from 'react-native/Libraries/NewAppScreen'
 
 export type MainTabParams = {
-  Match: undefined
-  Map: undefined
-  Contact: undefined
-  Account: undefined
+  MatchScreen: undefined
+  MapScreen: undefined
+  ContactScreen: undefined
+  AccountScreen: undefined
 }
 
 const getTabBarIcon =
@@ -34,7 +35,7 @@ const getTabBarIcon =
 const Tab = createBottomTabNavigator<MainTabParams>()
 
 export default function MainNavigation({ navigation, route }) {
-  const routeName = getFocusedRouteNameFromRoute(route) ?? 'Contact'
+  const routeName = getFocusedRouteNameFromRoute(route) ?? 'ContactScreen'
   const { colors } = useTheme()
 
   const tabBarItemStyleActive = {
@@ -49,7 +50,7 @@ export default function MainNavigation({ navigation, route }) {
 
   return (
     <Tab.Navigator
-      initialRouteName="Accounts"
+      initialRouteName="AccountsScreen"
       screenOptions={{
         headerShown: false,
         tabBarShowLabel: false,
@@ -60,7 +61,7 @@ export default function MainNavigation({ navigation, route }) {
       }}
     >
       <Tab.Screen
-        name="Matches"
+        name="MatchScreen"
         component={MatchScreen}
         options={{
           title: 'Matches',
@@ -72,7 +73,7 @@ export default function MainNavigation({ navigation, route }) {
         }}
       />
       <Tab.Screen
-        name="Map"
+        name="MapScreen"
         component={MapScreen}
         options={{
           title: 'Map',
@@ -84,7 +85,7 @@ export default function MainNavigation({ navigation, route }) {
         }}
       />
       <Tab.Screen
-        name="Contact"
+        name="ContactScreen"
         component={ContactScreen}
         options={{
           title: 'Messages',
@@ -96,8 +97,8 @@ export default function MainNavigation({ navigation, route }) {
         }}
       />
       <Tab.Screen
-        name="Accounts"
-        component={AccountScreen}
+        name="AccountNavigation"
+        component={AccountNavigation}
         options={{
           title: 'Accounts',
           tabBarIcon: getTabBarIcon('account'),

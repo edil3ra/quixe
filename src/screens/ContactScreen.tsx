@@ -62,56 +62,54 @@ export default function ContactScreen({ navigation, route }) {
         </List.Subheader>
         {items.map((item) => {
           return (
-            <>
-              <TouchableRipple
-                style={styles.ripple}
-                onPress={() => {}}
-                rippleColor={theme.colors.tertiary}
-              >
-                <List.Item
-                  left={() => (
-                    <Image
-                      source={require('~/assets/images/avatar.png')}
-                      style={styles.image}
-                    />
-                  )}
-                  title={({ color: titleColor, fontSize }) => (
-                    <View
-                      style={[styles.container, styles.row, styles.customTitle]}
+            <TouchableRipple
+              key={item.name}
+              style={styles.ripple}
+              onPress={() => {}}
+              rippleColor={theme.colors.tertiary}
+            >
+              <List.Item
+                left={() => (
+                  <Image
+                    source={require('~/assets/images/avatar.png')}
+                    style={styles.image}
+                  />
+                )}
+                title={({ color: titleColor, fontSize }) => (
+                  <View
+                    style={[styles.container, styles.row, styles.customTitle]}
+                  >
+                    <Text
+                      variant="titleSmall"
+                      style={{ color: titleColor, fontSize }}
                     >
-                      <Text
-                        variant="titleSmall"
-                        style={{ color: titleColor, fontSize }}
-                      >
-                        {item.name}
-                      </Text>
-                      <Caption>
-                        {format(new Date(item.createdAt), 'yy-mm-dd')}
-                      </Caption>
-                    </View>
-                  )}
-                  description={({ color: descriptionColor, fontSize }) => (
-                    <View
-                      style={[
-                        styles.container,
-                        styles.column,
-                        styles.description,
-                      ]}
+                      {item.name}
+                    </Text>
+                    <Caption>
+                      {format(new Date(item.createdAt), 'yy-mm-dd')}
+                    </Caption>
+                  </View>
+                )}
+                description={({ color: descriptionColor, fontSize }) => (
+                  <View
+                    style={[
+                      styles.container,
+                      styles.column,
+                      styles.description,
+                    ]}
+                  >
+                    <Text
+                      variant="bodySmall"
+                      numberOfLines={1}
+                      ellipsizeMode={'tail'}
+                      style={{ color: descriptionColor, fontSize }}
                     >
-                      <Text
-                        variant="bodySmall"
-                        numberOfLines={1}
-                        ellipsizeMode={'tail'}
-                        style={{ color: descriptionColor, fontSize }}
-                      >
-                        {item.content}
-                      </Text>
-                    </View>
-                  )}
-                />
-              </TouchableRipple>
-              <Divider bold />
-            </>
+                      {item.content}
+                    </Text>
+                  </View>
+                )}
+              />
+            </TouchableRipple>
           )
         })}
       </List.Section>

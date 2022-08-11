@@ -26,7 +26,7 @@ export default function AccountScreen({ navigation, route }) {
       >
         <TouchableRipple
           style={styles.ripple}
-          onPress={() => {}}
+          onPress={() => navigation.push('ProfileScreen')}
           rippleColor={theme.colors.tertiary}
         >
           <View
@@ -65,7 +65,7 @@ export default function AccountScreen({ navigation, route }) {
       <View>
         <List.Section style={{ marginTop: 0 }}>
           <TouchableRipple
-            onPress={() => {}}
+            onPress={() => navigation.push('PreferenceScreen')}
             rippleColor={theme.colors.tertiary}
           >
             <List.Item
@@ -79,7 +79,7 @@ export default function AccountScreen({ navigation, route }) {
           </TouchableRipple>
           <Divider bold />
           <TouchableRipple
-            onPress={() => {}}
+            onPress={() => navigation.push('InvitationScreen')}
             rippleColor={theme.colors.tertiary}
           >
             <List.Item
@@ -93,7 +93,7 @@ export default function AccountScreen({ navigation, route }) {
           </TouchableRipple>
           <Divider bold />
           <TouchableRipple
-            onPress={() => {}}
+            onPress={() => navigation.push('SettingsScreen')}
             rippleColor={theme.colors.tertiary}
           >
             <List.Item

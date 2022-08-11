@@ -24,7 +24,7 @@ export type MainTabParams = {
   MatchScreen: undefined
   MapScreen: undefined
   ContactScreen: undefined
-  AccountScreen: undefined
+  AccountNavigation: undefined
 }
 
 const getTabBarIcon =
@@ -50,7 +50,7 @@ export default function MainNavigation({ navigation, route }) {
 
   return (
     <Tab.Navigator
-      initialRouteName="AccountsScreen"
+      initialRouteName="AccountNavigation"
       screenOptions={{
         headerShown: false,
         tabBarShowLabel: false,

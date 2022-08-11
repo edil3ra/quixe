@@ -8,12 +8,14 @@ function AppBar({ navigation }) {
   return (
     <Appbar.Header elevated={false} mode="small">
       <Appbar.BackAction onPress={() => navigation.pop()} />
-      <Appbar.Content title="Message" />
+      <Appbar.Content title="Profile" />
     </Appbar.Header>
   )
 }
 
-export default function SettingsScreen({ navigation, route }) {
+export default function ProfileScreen({ navigation, route }) {
+  const theme = useTheme()
+
   React.useLayoutEffect(() => {
     navigation.setOptions({
       headerShown: true,
@@ -23,7 +25,7 @@ export default function SettingsScreen({ navigation, route }) {
 
   return (
     <MainLayoutContainer withNavBar={false}>
-      <Text>Settings</Text>
+      <Text>Profile</Text>
     </MainLayoutContainer>
   )
 }

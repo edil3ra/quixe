@@ -6,19 +6,10 @@ import { useTheme } from 'react-native-paper'
 
 import MatchScreen from '~/screens/MatchScreen'
 import ContactScreen from '~/screens/ContactScreen'
-import MessageScreen from '~/screens/MessageScreen'
 import MapScreen from '~/screens/MapScreen'
-import AccountScreen from '~/screens/AccountScreen'
 import AccountNavigation from '~/navigation/AccountNavigation'
 
-import {
-  getFocusedRouteNameFromRoute,
-  NavigatorScreenParams,
-  ParamListBase,
-  useIsFocused,
-} from '@react-navigation/native'
-import { StyleSheet, Easing } from 'react-native'
-import { Colors } from 'react-native/Libraries/NewAppScreen'
+import { getFocusedRouteNameFromRoute } from '@react-navigation/native'
 
 export type MainTabParams = {
   MatchScreen: undefined
@@ -29,7 +20,7 @@ export type MainTabParams = {
 
 const getTabBarIcon =
   (name: string) =>
-  ({ color, size }: { color: string; size: number }) =>
+  ({ color }: { color: string; size: number }) =>
     <MaterialCommunityIcons name={name} color={color} size={22} />
 
 const Tab = createBottomTabNavigator<MainTabParams>()
@@ -65,9 +56,9 @@ export default function MainNavigation({ navigation, route }) {
         component={MatchScreen}
         options={{
           title: 'Matches',
-          tabBarIcon: getTabBarIcon('file-document'),
+          tabBarIcon: getTabBarIcon('lightning-bolt'),
           tabBarItemStyle:
-            routeName == 'Matches'
+            routeName === 'Matches'
               ? tabBarItemStyleActive
               : tabBarItemStyleInactive,
         }}
@@ -79,7 +70,7 @@ export default function MainNavigation({ navigation, route }) {
           title: 'Map',
           tabBarIcon: getTabBarIcon('map'),
           tabBarItemStyle:
-            routeName == 'Map'
+            routeName === 'Map'
               ? tabBarItemStyleActive
               : tabBarItemStyleInactive,
         }}
@@ -91,7 +82,7 @@ export default function MainNavigation({ navigation, route }) {
           title: 'Messages',
           tabBarIcon: getTabBarIcon('message'),
           tabBarItemStyle:
-            routeName == 'Contact'
+            routeName === 'Contact'
               ? tabBarItemStyleActive
               : tabBarItemStyleInactive,
         }}
@@ -99,8 +90,8 @@ export default function MainNavigation({ navigation, route }) {
       <Tab.Screen
         name="AccountNavigation"
         component={AccountNavigation}
-        listeners={({ navigation, route }) => ({
-          tabPress: (e) => {
+        listeners={() => ({
+          tabPress: () => {
             navigation.navigate(route.name)
           },
         })}
@@ -108,7 +99,7 @@ export default function MainNavigation({ navigation, route }) {
           title: 'Accounts',
           tabBarIcon: getTabBarIcon('account'),
           tabBarItemStyle:
-            routeName == 'Accounts'
+            routeName === 'Accounts'
               ? tabBarItemStyleActive
               : tabBarItemStyleInactive,
         }}

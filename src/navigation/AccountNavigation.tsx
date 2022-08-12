@@ -1,6 +1,5 @@
 import * as React from 'react'
 
-import { View, ScrollView } from 'react-native'
 import AccountScreen from '~/screens/accounts/AccountScreen'
 import ProfileScreen from '~/screens/accounts/ProfileScreen'
 import PreferenceScreen from '~/screens/accounts/PreferenceScreen'
@@ -17,7 +16,7 @@ export type AccountNavigationParams = {
   SettingsScreen: undefined
 }
 
-export default function AccountNavigation({ navigation, route }) {
+export default function AccountNavigation() {
   const Stack = createNativeStackNavigator<AccountNavigationParams>()
 
   return (

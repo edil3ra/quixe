@@ -14,8 +14,6 @@ function AppBar({ navigation }) {
 }
 
 export default function InvitationScreen({ navigation, route }) {
-  const theme = useTheme()
-
   React.useLayoutEffect(() => {
     navigation.setOptions({
       headerShown: true,

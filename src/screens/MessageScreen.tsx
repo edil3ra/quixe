@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { StyleSheet, View, ScrollView } from 'react-native'
+import { StyleSheet, View } from 'react-native'
 import { Appbar, Text, Divider, Surface, useTheme } from 'react-native-paper'
 import Ionicons from '@expo/vector-icons/Ionicons'
 
@@ -66,7 +66,6 @@ function AppBar({ colors }) {
 }
 
 export default function MessageScreen({ navigation, route }) {
-  const items = messages
   const theme = useTheme()
 
   React.useLayoutEffect(() => {

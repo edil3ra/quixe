@@ -1,11 +1,10 @@
 import * as React from 'react'
-import { StyleSheet, Image, View, ScrollView } from 'react-native'
+import { StyleSheet, Image, View } from 'react-native'
 import {
   Appbar,
   Caption,
   List,
   Text,
-  Divider,
   useTheme,
   TouchableRipple,
 } from 'react-native-paper'

@@ -1,24 +1,9 @@
 import * as React from 'react'
-import {
-  Text,
-  Appbar,
-  FAB,
-  Portal,
-  useTheme,
-  Divider,
-  List,
-} from 'react-native-paper'
+import { Text, FAB, useTheme, Divider, List } from 'react-native-paper'
 import { View, StyleSheet, Image, ScrollView } from 'react-native'
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
-import {
-  getFocusedRouteNameFromRoute,
-  NavigatorScreenParams,
-  ParamListBase,
-  useIsFocused,
-} from '@react-navigation/native'
-import MainLayoutContainer from '~/components/MainLayoutContainer'
 
-export default function SettingScreen({ navigation, options }) {
+export default function MatchScreen({ navigation, options }) {
   const theme = useTheme()
   const placeholder = `https://unsplash.it/300/300/?random&__id=1`
 

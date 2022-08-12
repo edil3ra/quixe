@@ -1,9 +1,7 @@
 import * as React from 'react'
 
-import { StyleSheet, Image, View, ScrollView } from 'react-native'
+import { StyleSheet, View } from 'react-native'
 import {
-  Appbar,
-  Caption,
   List,
   Text,
   Divider,
@@ -14,7 +12,7 @@ import {
 } from 'react-native-paper'
 import MainLayoutContainer from '~/components/MainLayoutContainer'
 
-export default function AccountScreen({ navigation, route }) {
+export default function AccountScreen({ navigation }) {
   const theme = useTheme()
 
   return (
@@ -137,14 +135,12 @@ const styles = StyleSheet.create({
   },
   profileHeaderInner: {
     position: 'absolute',
-    top: 0,
-    left: 0,
+    top: 50,
+    left: 50,
     right: 0,
     bottom: 0,
     justifyContent: 'center',
     alignItems: 'center',
-    top: 50,
-    left: 50,
   },
   profileAvatar: {
     justifyContent: 'center',

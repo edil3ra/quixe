@@ -43,7 +43,7 @@ function AppBar({ theme }) {
   )
 }
 
-export default function ContactScreen({ navigation, route }) {
+export default function MessagesScreen({ navigation }) {
   const items = messages
   const theme = useTheme()
   React.useLayoutEffect(() => {
@@ -64,7 +64,7 @@ export default function ContactScreen({ navigation, route }) {
             <TouchableRipple
               key={item.name}
               style={styles.ripple}
-              onPress={() => {}}
+              onPress={() => navigation.push('MessageScreen')}
               rippleColor={theme.colors.tertiary}
             >
               <List.Item

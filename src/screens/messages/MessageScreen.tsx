@@ -1,6 +1,13 @@
 import * as React from 'react'
 import { StyleSheet, View } from 'react-native'
-import { Appbar, Text, Divider, Surface, useTheme } from 'react-native-paper'
+import {
+  Appbar,
+  Text,
+  Divider,
+  Surface,
+  useTheme,
+  Paragraph,
+} from 'react-native-paper'
 import Ionicons from '@expo/vector-icons/Ionicons'
 
 import { format } from 'date-fns'
@@ -13,11 +20,11 @@ function FromMessage() {
   return (
     <View style={styles.row}>
       <Surface elevation="1">
-        <Text variant="bodyMedium" style={styles.messageText}>
+        <Paragraph style={styles.messageText}>
           Ut faucibus pulvinar elementum integer enim neque, volutpat ac
           tincidunt vitae, semper quis. Egestas diam in arcu cursus euismod quis
           viverra nibh cras pulvinar mattis nunc, sed blandit libero volutpat.
-        </Text>
+        </Paragraph>
         <View style={styles.messageFooter}>
           <View style={styles.messageDate}>
             <Text variant="bodySmall" style={{ color: theme.colors.secondary }}>
@@ -35,11 +42,16 @@ function ToMessage() {
   return (
     <View style={styles.row}>
       <Surface elevation="5">
-        <Text variant="bodyMedium" style={styles.messageText}>
+        <Paragraph style={styles.messageText}>
           Ut faucibus pulvinar elementum integer enim neque, volutpat ac
           tincidunt vitae, semper quis. Egestas diam in arcu cursus euismod quis
-          viverra nibh cras pulvinar mattis nunc, sed blandit libero volutpat.
-        </Text>
+          tincidunt vitae, semper quis. Egestas diam in arcu cursus {'\n'}{' '}
+          {'\n'}
+          euismod quis tincidunt vitae, semper quis. Egestas diam in arcu cursus
+          euismod quis viverra nibh cras pulvinar mattis nunc, sed blandit
+          libero volutpat.
+        </Paragraph>
+
         <View style={styles.messageFooter}>
           <View style={styles.messageDate}>
             <Ionicons name="md-checkmark-done" size={16} color="green" />
@@ -56,10 +68,10 @@ function ToMessage() {
   )
 }
 
-function AppBar({ colors }) {
+function AppBar({ navigation }) {
   return (
     <Appbar.Header elevated={false} mode="small">
-      <Appbar.BackAction />
+      <Appbar.BackAction onPress={() => navigation.pop()} />
       <Appbar.Content title="Message" />
     </Appbar.Header>
   )
@@ -71,7 +83,7 @@ export default function MessageScreen({ navigation, route }) {
   React.useLayoutEffect(() => {
     navigation.setOptions({
       headerShown: true,
-      header: () => <AppBar colors={theme.colors} />,
+      header: () => <AppBar navigation={navigation} />,
     })
   })
 
@@ -109,7 +121,7 @@ const styles = StyleSheet.create({
   row: {
     paddingHorizontal: 20,
     paddingVertical: 2,
-    width: '80%',
+    width: '82%',
   },
   left: {
     paddingTop: 4,
@@ -120,7 +132,7 @@ const styles = StyleSheet.create({
     alignItems: 'flex-end',
   },
   messageText: {
-    padding: 4,
+    padding: 6,
   },
 
   messageFooter: {

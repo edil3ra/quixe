@@ -3,18 +3,19 @@ import * as React from 'react'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
 import { useTheme } from 'react-native-paper'
+import { getFocusedRouteNameFromRoute } from '@react-navigation/native'
+
+import AccountNavigation from '~/navigation/AccountNavigation'
+import MessagesNavigation from '~/navigation/MessagesNavigation'
 
 import MatchScreen from '~/screens/MatchScreen'
-import ContactScreen from '~/screens/ContactScreen'
+// import MessagesScreens from '~/screens/messages/MessagesScreen'
 import MapScreen from '~/screens/MapScreen'
-import AccountNavigation from '~/navigation/AccountNavigation'
-
-import { getFocusedRouteNameFromRoute } from '@react-navigation/native'
 
 export type MainTabParams = {
   MatchScreen: undefined
   MapScreen: undefined
-  ContactScreen: undefined
+  MessagesScreen: undefined
   AccountNavigation: undefined
 }
 
@@ -26,7 +27,7 @@ const getTabBarIcon =
 const Tab = createBottomTabNavigator<MainTabParams>()
 
 export default function MainNavigation({ navigation, route }) {
-  const routeName = getFocusedRouteNameFromRoute(route) ?? 'ContactScreen'
+  const routeName = getFocusedRouteNameFromRoute(route) ?? 'MessagesScreen'
   const { colors } = useTheme()
 
   const tabBarItemStyleActive = {
@@ -76,13 +77,13 @@ export default function MainNavigation({ navigation, route }) {
         }}
       />
       <Tab.Screen
-        name="ContactScreen"
-        component={ContactScreen}
+        name="MessagesNavigation"
+        component={MessagesNavigation}
         options={{
           title: 'Messages',
           tabBarIcon: getTabBarIcon('message'),
           tabBarItemStyle:
-            routeName === 'Contact'
+            routeName === 'Messages'
               ? tabBarItemStyleActive
               : tabBarItemStyleInactive,
         }}

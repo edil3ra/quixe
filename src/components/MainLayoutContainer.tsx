@@ -20,9 +20,7 @@ export default function MainLayoutContainer({
   ...rest
 }: Props) {
   const theme = useTheme()
-
   const insets = useSafeAreaInsets()
-  console.log(insets)
 
   const containerStyle = [
     styles.container,
